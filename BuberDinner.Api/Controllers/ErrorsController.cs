@@ -9,7 +9,7 @@ namespace BuberDinner.Api.Controllers
 {
     public class ErrorsController : ControllerBase
     {
-        [Route("/error-old")]
+        [Route("/error")]
         public IActionResult Error()
         {
             var exception = HttpContext.Features.Get<IExceptionHandlerFeature>()?.Error;
