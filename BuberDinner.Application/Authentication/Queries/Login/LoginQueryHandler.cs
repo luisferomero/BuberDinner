@@ -22,8 +22,11 @@ public class LoginQueryHandler : IRequestHandler<LoginQuery, Result<Authenticati
 
     private readonly IJwtGenerator _jwtTokenGenerator;
     private readonly IUserRepository _userRepository;
+
     public async Task<Result<AuthenticationResult>> Handle(LoginQuery request, CancellationToken cancellationToken)
     {
+        await Task.CompletedTask;
+
         if (_userRepository.GetUserByEmail(request.Email) is not User user || user.Password != request.Password)
             return Result.Fail<AuthenticationResult>(new AuthenticationError());
 

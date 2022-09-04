@@ -17,11 +17,12 @@ public class RegisterCommandHandler :
     }
 
     private readonly IJwtGenerator _jwtTokenGenerator;
-
     private readonly IUserRepository _userRepository;
 
     public async Task<Result<AuthenticationResult>> Handle(RegisterCommand request, CancellationToken cancellationToken)
     {
+        await Task.CompletedTask;
+
         if (_userRepository.GetUserByEmail(request.Email) is not null)
                 return Result.Fail<AuthenticationResult>(new[] { new DuplicateEmailError() });
 
