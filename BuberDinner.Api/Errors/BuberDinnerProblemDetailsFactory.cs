@@ -88,6 +88,6 @@ public class BuberDinnerProblemDetailsFactory : ProblemDetailsFactory
         if (traceId != null)
             problemDetails.Extensions["traceId"] = traceId;
 
-        problemDetails.Extensions["customPropertyFromFactory"] ="Custom Value From Factory";
+        problemDetails.Extensions["customPropertyFromFactory"] = "Custom Value From Factory";
     }
 }

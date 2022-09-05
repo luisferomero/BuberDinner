@@ -7,9 +7,9 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BuberDinner.Api.Controllers;
+
 [Route("auth")]
-[ApiController]
-public class AuthenticationController : ControllerBase
+public class AuthenticationController : ApiController
 {
     private readonly IMediator _mediator;
     private readonly IMapper _mapper;
@@ -30,12 +30,7 @@ public class AuthenticationController : ControllerBase
         if (registerResult.IsSuccess)
             return Ok( _mapper.Map<AuthenticationResponse>(registerResult.Value));
 
-        var firstError = registerResult.Errors[0];
-
-        if (firstError is DuplicateEmailError)
-            return Problem(statusCode: StatusCodes.Status409Conflict, detail: firstError.Message);
-
-        return Problem();
+        return Problem(registerResult.Errors);
     }
 
     [HttpPost("login")]
@@ -47,11 +42,6 @@ public class AuthenticationController : ControllerBase
         if (loginResult.IsSuccess)
             return Ok(_mapper.Map<AuthenticationResponse>(loginResult.Value));
 
-        var firstError = loginResult.Errors[0];
-
-        if (firstError is AuthenticationError)
-            return Problem(statusCode: StatusCodes.Status403Forbidden, detail: firstError.Message);
-
-        return Problem();
+        return Problem(loginResult.Errors);
     }
 }
