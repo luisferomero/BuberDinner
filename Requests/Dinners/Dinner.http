@@ -1,0 +1,6 @@
+@host=https://localhost:7037
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiNjcxODdkOC0wYzFlLTQ5YTUtYmQwNS0yODMxNTBjNzBmMjMiLCJnaXZlbl9uYW1lIjoiTHVpcyIsImZhbWlseV9uYW1lIjoiUm9tZXJvIiwianRpIjoiMGIzOWFhM2EtMTI3OS00ODE2LTgxMDItYWRlZjJhMGE5ZjQ2IiwiZXhwIjoxNjYyNDE5NjAwLCJpc3MiOiJCdWJlckRpbm5lciIsImF1ZCI6IkJ1YmVyRGlubmVyIn0.Gy4ngcnNrPfGSwRXmSn7mevXUdUoeYBaGN5aK7X-1aI
+
+GET {{host}}/dinners
+Content-Type: application/json
+Authorization: Bearer {{token}}

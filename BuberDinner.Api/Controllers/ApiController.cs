@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using BuberDinner.Application.Common.Errors;
 using FluentResults;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
 namespace BuberDinner.Api.Controllers;
 
 [ApiController]
+[Authorize]
 public class ApiController : ControllerBase
 {
     protected IActionResult Problem(List<IError> errors)
