@@ -24,7 +24,6 @@ public class AuthenticationController : ApiController
     public async Task<IActionResult> Register(RegisterRequest request)
     {
         var command = _mapper.Map<RegisterCommand>(request);
-
         var registerResult = await _mediator.Send(command);
 
         if (registerResult.IsSuccess)

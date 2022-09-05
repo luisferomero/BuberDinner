@@ -24,7 +24,7 @@ public class RegisterCommandHandler :
         await Task.CompletedTask;
 
         if (_userRepository.GetUserByEmail(request.Email) is not null)
-                return Result.Fail<AuthenticationResult>(new[] { new DuplicateEmailError() });
+            return Result.Fail<AuthenticationResult>(new[] { new DuplicateEmailError() });
 
         var user = new User
         {
